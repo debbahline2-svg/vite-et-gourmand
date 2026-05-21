@@ -8,11 +8,11 @@ private $port;
 public $conn;
 
 public function getConnection() {
-$this->host = getenv('MYSQLHOST');
-$this->db_name = getenv('MYSQLDATABASE');
-$this->username = getenv('MYSQLUSER');
-$this->password = getenv('MYSQLPASSWORD');
-$this->port = getenv('MYSQLPORT');
+$this->host = getenv('MYSQLHOST') ?: 'mysql.railway.internal';
+$this->db_name = getenv('MYSQLDATABASE') ?: 'railway';
+$this->username = getenv('MYSQLUSER') ?: 'root';
+$this->password = getenv('MYSQLPASSWORD') ?: '';
+$this->port = getenv('MYSQLPORT') ?: '3306';
 
 $this->conn = null;
 try {
