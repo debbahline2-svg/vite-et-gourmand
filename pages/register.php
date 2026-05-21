@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
 
-    // VÉRIFICATION ÉTAPE PAR ÉTAPE
+    // VÉRIF ÉTAPE PAR ÉTAPE
     if ($password !== $confirm_password) {
         $erreur = "Les mots de passe ne sont pas identiques.";
     } elseif (strlen($password) < 10) {
@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif (!preg_match('/[^A-Za-z0-9]/', $password)) {
         $erreur = "Il manque un caractère spécial (ex: @, !, ?, /).";
     } elseif (!isset($_POST['rgpd_consent'])) { 
-        // Sécurité côté serveur au cas où un malin désactive le HTML 'required'
+        // Sécurité côté serveur
         $erreur = "Vous devez accepter la politique de confidentialité.";
     } else {
         $user->nom = $_POST['nom'];

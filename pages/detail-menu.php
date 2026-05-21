@@ -10,7 +10,7 @@ require_once '../includes/db.php';
 $id_param = isset($_GET['id']) ? trim($_GET['id']) : '0';
 
 
-// Tableau de données synchronisé avec tes 4 options du bas
+// Tableau de données synchronisé avec les 4 options du bas
 
 $options_sur_mesure = [
 
@@ -129,7 +129,7 @@ $options_sur_mesure = [
 ];
 
 
-// Si le paramètre correspond à une de nos 4 options personnalisées
+// Si le paramètre correspond à une des 4 options personnalisées
 
 if (array_key_exists($id_param, $options_sur_mesure)) {
 

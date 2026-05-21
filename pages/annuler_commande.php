@@ -10,10 +10,10 @@ if (!isset($_SESSION['user_id'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_commande'])) {
     $db = (new Database())->getConnection();
     $id = $_POST['id_commande'];
-    // On récupère la raison pour la traçabilité
+    // récupère la raison pour la traçabilité
     $raison = htmlspecialchars($_POST['raison'] ?? 'Non spécifiée');
 
-    // On met à jour le statut
+    //  met à jour le statut
     $stmt = $db->prepare("UPDATE commandes SET statut = 'Annulée' WHERE id = ? AND user_id = ?");
     $stmt->execute([$id, $_SESSION['user_id']]);
 

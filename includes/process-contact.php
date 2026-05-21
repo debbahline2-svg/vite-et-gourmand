@@ -3,7 +3,7 @@ session_start();
 require_once 'db.php'; 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // 1. On récupère les noms exacts de tes nouveaux champs <input>
+    // 1. On récupère les noms exacts champs <input>
     $nom = htmlspecialchars($_POST['nom']);
     $email = htmlspecialchars($_POST['email']);
     $evenement = htmlspecialchars($_POST['event']);
@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $date_evenement = $_POST['date_event']; 
 
     try {
-        // 2. Utilisation de 'convives' car 'nombre_personnes' n'existe pas dans ta table
+        // 2. Utilisation de 'convives' 
         $sql = "INSERT INTO commandes (nom_client, email_client, convives, date_evenement, message, date_commande) 
                 VALUES (?, ?, ?, ?, ?, NOW())";
         

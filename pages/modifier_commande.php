@@ -14,11 +14,11 @@ $db = $database->getConnection();
 $id_commande = isset($_GET['id']) ? intval($_GET['id']) : 0;
 $message = "";
 
-// 2. Traitement de la mise à jour
+// 2. Traitement de la maj
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_status'])) {
     $nouveau_statut = $_POST['statut'];
     
-    // CORRECTION ICI : Remplacement de u.email par u.identifiant
+    // CORRECTION : Remplacement de u.email par u.identifiant
     $stmt_email = $db->prepare("SELECT u.identifiant FROM commandes c JOIN utilisateurs u ON c.user_id = u.id WHERE c.id = :id");
     $stmt_email->execute([':id' => $id_commande]);
     $client = $stmt_email->fetch(PDO::FETCH_ASSOC);
@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_status'])) {
             $subject = "Votre commande est terminée !";
             $lien = "http://" . $_SERVER['HTTP_HOST'] . "/pages/avis.php?id_commande=" . $id_commande;
             $body = "Merci pour votre commande. Votre avis compte pour nous, donnez votre note ici : " . $lien;
-            // Note : mail() ne fonctionnera qu'en ligne (sur un serveur SMTP)
+            //  mail() ne fonctionnera qu'en ligne (sur un serveur SMTP)
             @mail($to, $subject, $body);
         }
 
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_status'])) {
     }
 }
 
-// 3. Récupération des infos (Correction de la requête aussi pour plus de sécurité)
+// 3. Récupération des infos et correction de la requête aussi pour plus de sécurité)
 $query_cmd = "SELECT c.*, u.nom, u.prenom FROM commandes c 
               JOIN utilisateurs u ON c.user_id = u.id 
               WHERE c.id = :id";

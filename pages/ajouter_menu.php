@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $description = $_POST['description'];
     $prix = $_POST['prix'];
     $nb_min = $_POST['nb_pers_min'];
-    $image = $_POST['image']; // Pour faire simple, on tape le nom du fichier image
+    $image = $_POST['image']; // en gros on tape fichier image
 
     $query = "INSERT INTO menus (titre, description, prix, nb_pers_min, image) 
               VALUES (:t, :d, :p, :m, :i)";

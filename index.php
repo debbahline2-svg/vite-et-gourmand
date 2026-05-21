@@ -31,7 +31,7 @@ $estConnecte = isset($_SESSION['user_id']);
         border-bottom: 1px solid rgba(193, 127, 58, 0.2);
     }
 
-    /* Cartes Philosophie */
+    /* Cartes  */
     .card-academia {
         background: rgba(45, 35, 26, 0.4);
         border: 1px solid rgba(193, 127, 58, 0.15);
@@ -45,7 +45,7 @@ $estConnecte = isset($_SESSION['user_id']);
         transform: translateY(-5px);
     }
 
-    /* Style des Avis (Récits) */
+    /* Style des Avis  */
     .quote-card {
         background: transparent;
         border-left: 1px solid rgba(193, 127, 58, 0.4);
@@ -78,7 +78,7 @@ $estConnecte = isset($_SESSION['user_id']);
         letter-spacing: 1px;
     }
 
-    /* Zone de réponse du traiteur */
+    /* Zone de réponse traiteur */
     .reponse-traiteur {
         background: rgba(193, 127, 58, 0.05);
         border-left: 1px solid var(--accent-gold);

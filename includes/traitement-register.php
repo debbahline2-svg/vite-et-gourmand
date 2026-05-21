@@ -8,21 +8,21 @@ $db = $database->getConnection();
 $user = new User($db);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // 1. Vérification mots de passe identiques
+    // 1. Vérification MDP PAREIL
     if($_POST['password'] !== $_POST['password2']) {
-        // Attention : ici on repart vers le dossier pages pour afficher l'erreur
+        // Attention repart vers le dossier pages pour afficher l'erreur
         header("Location: ../pages/register.php?erreur=mdp_different");
         exit();
     }
 
-    // 2. Vérification force (Studi : 10 car. + 1 Maj + 1 Chiffre)
+    // 2. Vérification force (Studi : 10 car. + 1 Maj + 1 Chiffre obligatoir esinon re essayer)
     $pass = $_POST['password'];
     if (!preg_match('/[A-Z]/', $pass) || !preg_match('/[0-9]/', $pass) || strlen($pass) < 10) {
         header("Location: ../pages/register.php?erreur=mdp_faible");
         exit();
     }
 
-    // ... la suite du code reste la même ...
+    // ... la suite du code pareil ...
     $user->nom = $_POST['nom'];
     $user->prenom = $_POST['prenom'];
     $user->email = $_POST['email'];

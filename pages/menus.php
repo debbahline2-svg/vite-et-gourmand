@@ -5,7 +5,7 @@ require_once '../includes/db.php';
 $database = new Database();
 $db = $database->getConnection();
 
-// Récupération de tous les menus pour laisser le JavaScript filtrer à la volée
+// Récupération de tous les menus pour laisser le JavaScript filtrer 
 $sql = "SELECT * FROM menus";
 $query = $db->prepare($sql);
 $query->execute();
@@ -25,7 +25,7 @@ $menus = $query->fetchAll(PDO::FETCH_ASSOC);
         margin-top: 50px;
     }
 
-    /* Boîtier de filtres élargi pour intégrer les demandes Studi */
+    /* Boîtier de filtres élargi pour les demandes Studi */
     .filter-bar { 
         background: #161513; 
         padding: 25px; 

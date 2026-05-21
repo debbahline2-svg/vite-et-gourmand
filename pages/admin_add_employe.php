@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user->gsm = $_POST['gsm'];
     $user->adresse = "Adresse Entreprise"; // Valeur par défaut
     $user->password = $_POST['password']; // Sera haché dans User.php
-    $user->role = 'employe'; // ON FORCE LE RÔLE EMPLOYÉ ICI
+    $user->role = 'employe'; // ON FORCE LE RÔLE EMPLOYÉ 
 
     if ($user->register()) {
         $message = "<div class='alert alert-success'>Compte employé créé ! Il peut maintenant se connecter.</div>";

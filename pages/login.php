@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user->email = $_POST['email'];
     $user->password = $_POST['password'];
 
-    // Dans ta classe User, assure-toi que la méthode login() effectue bien la requête :
+    // login() effectue bien la requête :
     // SELECT * FROM utilisateurs WHERE email = :email AND is_active = 1
     $userData = $user->login();
 

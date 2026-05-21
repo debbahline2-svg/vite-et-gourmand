@@ -2,7 +2,7 @@
 require_once '../includes/header.php'; 
 require_once '../includes/db.php'; 
 
-// Sécurité : Seule Julie/José (admin) peut entrer
+// Sécurité : Seule Julie/José (admin) peut entrer mais faudra utiliser Klenkle
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     header('Location: login.php');
     exit;

@@ -2,4 +2,4 @@
 --- MAIL SIMULÉ - COMMANDE #30 ---
 Destinataire: 
 Objet: Votre avis compte pour Vite & Gourmand !
-Lien pour noter votre prestation: http://localhost/vite-et-gourmand/pages/donner_avis.php?id_commande=30
+Lien pour noter votre prestation: http://localhost/vite-et-gourmand/pages/donner_avis.php?id_commande=30 

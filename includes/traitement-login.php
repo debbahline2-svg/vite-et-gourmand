@@ -1,11 +1,11 @@
 <?php
 session_start();
-// On corrige les chemins selon ton dossier (ici dans 'includes' d'après tes captures)
+// On corrige les chemins selon dossier 
 require_once '../includes/db.php';
 require_once '../includes/user.php';
 
 // Connexion à la base de données
-$database = new Database(); // Assure-toi que ta classe dans db.php s'appelle Database
+$database = new Database(); // REGARDE QUE C PAREIL classe dans db.php s'appelle Database
 $db = $database->getConnection();
 $user = new User($db);
 
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['user_prenom'] = $userData['prenom'];
         $_SESSION['role'] = $userData['role'];
 
-        // 2. LA MAGIE : On gère la redirection selon le rôle
+        // 2. attention : On gère la redirection selon le rôle
         if ($userData['role'] === 'admin') {
             // On crée la variable 'admin' attendue par ta page admin.php
             $_SESSION['admin'] = $userData['prenom']; 

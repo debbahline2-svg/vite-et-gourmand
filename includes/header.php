@@ -21,7 +21,7 @@ $back = $is_pages ? "../" : "";
             --dark-bg: #0c0b0a;
         }
 
-        /* --- LOGIQUE DALTONIEN --- */
+        /* --- LOGIQUE DALTONIEN (ya plusieur type donc pas hyper hyper fiable) --- */
         body.dalton-mode {
             filter: saturate(200%) contrast(110%);
         }

@@ -40,7 +40,7 @@ class User {
         return $stmt->execute();
     }
 
-    // --- CONNEXION (SÉCURISÉE) ---
+    // --- CONNEXION (SÉCURISÉE EVIDEMMENT) ---
     public function login() {
         // La condition "AND is_active = 1" empêche les comptes désactivés de se connecter
         $query = "SELECT * FROM " . $this->table_name . " WHERE identifiant = :email AND is_active = 1 LIMIT 1";

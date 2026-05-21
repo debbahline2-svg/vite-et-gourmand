@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user->adresse = $_POST['adresse'];
 
     if ($user->update()) {
-        // Optionnel : on peut mettre à jour le nom en session s'il a changé
+        // Optionnel : mettre à jour le nom en session s'il a changé
         $_SESSION['nom'] = $user->nom;
         echo "<script>window.location.href='profil.php';</script>";
         exit;

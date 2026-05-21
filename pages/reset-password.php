@@ -28,10 +28,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $database = new Database();
         $db = $database->getConnection();
         
-        // Utilisation de PASSWORD_BCRYPT pour être raccord avec ta méthode register()
+        // Utilisation de PASSWORD_BCRYPT pour être raccord avec la méthode register()
         $new_hash = password_hash($password, PASSWORD_BCRYPT);
         
-        // CORRECTION : Ciblage des colonnes "mot_de_passe" et "identifiant"
+        // Ciblage des colonnes mdp et idtf
         $stmt = $db->prepare("UPDATE utilisateurs SET mot_de_passe = ? WHERE identifiant = ?");
         if ($stmt->execute([$new_hash, $email_user])) {
             $message = "Votre mot de passe a bien été réinitialisé ! Vous pouvez maintenant vous connecter.";

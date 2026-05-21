@@ -11,7 +11,7 @@ if (!isset($_SESSION['role']) || ($_SESSION['role'] !== 'employe' && $_SESSION['
 $database = new Database();
 $db = $database->getConnection();
 
-// Requête SQL pour récupérer les commandes avec les infos nécessaires
+// Requête SQL  récupérer les commandes avec les infos 
 $query = "SELECT c.*, u.nom, u.prenom, m.titre 
           FROM commandes c 
           JOIN utilisateurs u ON c.user_id = u.id 

@@ -12,13 +12,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $ville    = htmlspecialchars($_POST['ville']); // On récupère la ville
     $distance = floatval($_POST['distance'] ?? 0); // La distance en km envoyée par le formulaire
     
-    // CALCUL DU PRIX : 5,59€/km si ce n'est pas Bordeaux
+    // CALCUL DU PRIX : 5,59€/km si ce hors Bordeaux
     $prix_livraison = 0;
     if (strtolower($ville) !== 'bordeaux') {
         $prix_livraison = $distance * 5.59;
     }
     
-    // Ici, tu ajoutes le prix de ton menu (exemple : 20€ par convive)
+    // prix
     $prix_menu = $convives * 20; 
     $total_final = $prix_menu + $prix_livraison;
 

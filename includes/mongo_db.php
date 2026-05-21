@@ -1,5 +1,5 @@
 <?php
-// On inclut l'autoloader généré par Composer s'il existe
+// On inclut l'autoloader généré par Composer 
 if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
     require_once __DIR__ . '/../vendor/autoload.php';
 }
@@ -11,7 +11,7 @@ class MongoDatabase {
     public function __construct() {
         // SÉCURITÉ EXAMEN : On vérifie si l'extension MongoDB est active sur la machine
         if (!class_exists('MongoDB\Driver\Manager')) {
-            // Si elle n'est pas chargée dans XAMPP, on s'arrête gentiment sans faire planter le site
+            // Si elle n'est pas chargée dans XAMPP, on s'arrête sans faire planter le site
             return;
         }
 
