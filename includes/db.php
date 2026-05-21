@@ -3,7 +3,7 @@ class Database {
 private $host = 'kodama.proxy.rlwy.net';
 private $db_name = 'railway';
 private $username = 'root';
-private $password = 'jAwHSNIFOwqlphobkQMMmbRUthjqRqve';
+private $password = 'jAwHSNIFOwqlphobkQNWmbRUthjqRqve';
 private $port = '41233';
 public $conn;
 
