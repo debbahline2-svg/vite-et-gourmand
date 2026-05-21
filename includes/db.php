@@ -1,19 +1,13 @@
 <?php
 class Database {
-private $host;
-private $db_name;
-private $username;
-private $password;
-private $port;
+private $host = 'kodama.proxy.rlwy.net';
+private $db_name = 'railway';
+private $username = 'root';
+private $password = 'jAwHSNIFOwqlphobkQMMmbRUthjqRqve';
+private $port = '41233';
 public $conn;
 
 public function getConnection() {
-$this->host = getenv('MYSQLHOST') ?: 'mysql.railway.internal';
-$this->db_name = getenv('MYSQLDATABASE') ?: 'railway';
-$this->username = getenv('MYSQLUSER') ?: 'root';
-$this->password = getenv('MYSQLPASSWORD') ?: '';
-$this->port = getenv('MYSQLPORT') ?: '3306';
-
 $this->conn = null;
 try {
 $this->conn = new PDO(
