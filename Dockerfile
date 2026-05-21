@@ -7,7 +7,8 @@ libcurl4-openssl-dev \
 zlib1g-dev \
 && pecl install mongodb \
 && docker-php-ext-enable mongodb \
-&& docker-php-ext-install pdo pdo_mysql mysqli
+&& docker-php-ext-install pdo pdo_mysql mysqli \
+&& a2dismod mpm_event && a2enmod mpm_prefork
 
 COPY . /var/www/html/
 
