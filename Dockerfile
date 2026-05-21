@@ -1,4 +1,4 @@
-FROM php:8.2-apache
+FROM php:8.2-cli
 
 RUN apt-get update && apt-get install -y \
 libssl-dev \
@@ -7,10 +7,12 @@ libcurl4-openssl-dev \
 zlib1g-dev \
 && pecl install mongodb \
 && docker-php-ext-enable mongodb \
-&& docker-php-ext-install pdo pdo_mysql mysqli \
-&& a2dismod mpm_event mpm_worker mpm_prefork \
-&& a2enmod mpm_prefork
+&& docker-php-ext-install pdo pdo_mysql mysqli
 
 COPY . /var/www/html/
 
-RUN chown -R www-data:www-data /var/www/html
+WORKDIR /var/www/html
+
+EXPOSE 80
+
+CMD ["php", "-S", "0.0.0.0:80", "-t", "/var/www/html"]
