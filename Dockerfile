@@ -8,7 +8,8 @@ zlib1g-dev \
 && pecl install mongodb \
 && docker-php-ext-enable mongodb \
 && docker-php-ext-install pdo pdo_mysql mysqli \
-&& a2dismod mpm_event && a2enmod mpm_prefork
+&& a2dismod mpm_event mpm_worker mpm_prefork \
+&& a2enmod mpm_prefork
 
 COPY . /var/www/html/
 
