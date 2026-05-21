@@ -1,0 +1,164 @@
+Line Debbah <debbahline2@gmail.com> 4:18 PM (0 minutes ago) to me <?php ini_set('display_errors', 1);
+error_reporting(E_ALL);
+require_once 'includes/header.php';
+?>< !--=====HERO=====--><section id="hero"><div class="container text-center py-5"><h1>Cuisine maison,
+pour toutes vos occasions</h1><p class="lead">Julie & José,
+25 ans de savoir-faire traiteur à Bordeaux</p><a href="/vite-et-gourmand/pages/menus.php" class="btn btn-hero mt-3">Découvrir nos menus </a></div></section>< !--=====PROFESSIONNALISME=====--><section id="professionnalisme" class="py-5"><div class="container"><h2 class="text-center mb-4">Notre professionnalisme</h2><div class="row text-center g-4"><div class="col-md-4"><div class="carte-atout p-4"><div class="icone-atout">👨‍🍳</div><h3>Équipe qualifiée</h3><p>25 ans d'expérience dans l' événementiel</p></div></div><div class="col-md-4"><div class="carte-atout p-4"><div class="icone-atout">🌿</div><h3>Produits frais et locaux</h3><p>Partenariats avec producteurs locaux</p></div></div><div class="col-md-4"><div class="carte-atout p-4"><div class="icone-atout">🏠</div><h3>Fait maison</h3><p>Préparé dans notre laboratoire aux normes HACCP</p></div></div></div></div></section>< !--=====AVIS CLIENTS=====--><section id="avis" class="py-5"><div class="container"><h2 class="text-center mb-4">Avis de nos clients</h2><div class="row g-4"><div class="col-md-4"><div class="carte-avis p-4"><div class="etoiles">★★★★★</div><p>"Une expérience incroyable et authentique, personnels sérieux et agréable merci !!" </p><span class="client">— Lily</span></div></div><div class="col-md-4"><div class="carte-avis p-4"><div class="etoiles">★★★★★</div><p>"Parfait pour notre baby shower, une expérience inoubliable." </p><span class="client">— Harry</span></div></div><div class="col-md-4"><div class="carte-avis p-4"><div class="etoiles">★★★★★</div><p>"Offre une grande variété de plats adaptés à plusieurs régimes alimentaires, nous recommandons vivement !" </p><span class="client">— Vanessa</span></div></div></div></div></section>< !--=====HORAIRES=====--><section id="horaires" class="py-5"><div class="container text-center"><h2 class="mb-4">Nos horaires</h2><div class="row justify-content-center"><div class="col-md-3"><div class="carte-horaire p-3"><strong>Lundi – Vendredi</strong><p>9h00 – 22h00</p></div></div><div class="col-md-3"><div class="carte-horaire p-3"><strong>Samedi</strong><p>10h00 – 00h00</p></div></div><div class="col-md-3"><div class="carte-horaire p-3"><strong>Dimanche</strong><p>Fermé</p></div></div></div></div></section><?php require_once 'includes/footer.php';
+
+:root {
+    --creme: #F5F0E8;
+    --brun: #3D2B1F;
+    --or: #C17F3A;
+    --espresso: #2C1A0E;
+}
+
+body {
+    background-color: var(--creme);
+    color: var(--brun);
+    font-family: 'Georgia', serif;
+    overflow-y: auto;
+    height: auto;
+}
+
+/* NAVBAR */
+#main-navbar {
+    background-color: var(--espresso);
+}
+
+#main-navbar .navbar-brand,
+#main-navbar .nav-link {
+    color: var(--creme) !important;
+}
+
+#main-navbar .nav-link:hover {
+    color: var(--or) !important;
+}
+
+/* HERO */
+#hero {
+    background-color: var(--brun);
+    color: var(--creme);
+    padding: 80px 0;
+}
+
+#hero h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+/* ATOUTS */
+#professionnalisme {
+    background-color: var(--creme);
+}
+
+.carte-atout {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    height: 100%;
+}
+
+.icone-atout {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+/* AVIS */
+#avis {
+    background-color: var(--brun);
+    color: var(--creme);
+}
+
+#avis h2 {
+    color: var(--creme);
+}
+
+.carte-avis {
+    background-color: var(--espresso);
+    border-radius: 12px;
+    height: 100%;
+}
+
+.etoiles {
+    color: var(--or);
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+}
+
+.client {
+    font-style: italic;
+    color: var(--or);
+}
+
+/* HORAIRES */
+#horaires {
+    background-color: var(--espresso);
+    color: var(--creme);
+}
+
+#horaires h2 {
+    color: var(--creme);
+}
+
+.carte-horaire {
+    background-color: var(--brun);
+    border-radius: 10px;
+    color: var(--creme);
+}
+
+/* FOOTER */
+#main-footer {
+    background-color: var(--espresso);
+    color: var(--creme);
+    padding: 20px 0;
+}
+
+#main-footer a {
+    color: var(--or);
+    text-decoration: none;
+}
+
+#main-footer a:hover {
+    text-decoration: underline;
+}
+
+/* BOUTON PRINCIPAL */
+.btn-hero {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: var(--or);
+    color: var(--espresso) !important;
+    font-weight: bold;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.btn-hero:hover {
+    background-color: var(--brun);
+    color: var(--creme) !important;
+}
+
+.btn-hero.w-100 {
+    display: block;
+    width: 100%;
+}
+
+/* FORMULAIRES */
+.form-control {
+    border: 1px solid var(--brun);
+    border-radius: 8px;
+}
+
+.form-control:focus {
+    border-color: var(--or);
+    box-shadow: 0 0 0 0.2rem rgba(193, 127, 58, 0.25);
+}
+
+/* MAIN */
+main {
+    min-height: 60vh;
+}

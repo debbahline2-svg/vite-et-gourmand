@@ -1,0 +1,3 @@
+$db->prepare("DELETE FROM avis WHERE id = ?")->execute([$_GET['id']]);
+// Option "Pro" : tu peux faire un UPDATE sur la commande pour ajouter un flag 'avis_supprime' = 1
+header('Location: employe_dashboard.php');
