@@ -23,7 +23,3 @@ Projet de gestion de restauration rapide avec suivi des commandes, espace employ
 - **Logique métier** : Calcul des frais de livraison dynamique (5.59€/km hors Bordeaux).
 - **Statistiques** : Analyse des ventes (MySQL) et statistiques NoSQL (MongoDB).
 
-## 👤 Utilisateurs de test
-- Admin : klenkle@fr / `Klenklen159!`
-- Client : enen@test.fr / `Tulipetour1!`
-- Employe : juliet@fr / `JulieTraiteur123!`
