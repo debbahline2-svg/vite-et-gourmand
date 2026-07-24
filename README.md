@@ -1,3 +1,4 @@
+HEAD
 # Vite & Gourmand - Système de Gestion de Commandes
 
 Projet de gestion de restauration rapide avec suivi des commandes, espace employé, et système d'avis clients.
@@ -23,3 +24,6 @@ Projet de gestion de restauration rapide avec suivi des commandes, espace employ
 - **Logique métier** : Calcul des frais de livraison dynamique (5.59€/km hors Bordeaux).
 - **Statistiques** : Analyse des ventes (MySQL) et statistiques NoSQL (MongoDB).
 
+=======
+# vite-et-gourmand
+cd71e3e1b547daece12a227bd95e96aa81d39c14
