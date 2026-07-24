@@ -1,15 +1,12 @@
 <?php 
 require_once '../includes/header.php'; 
-require_once '../includes/db.php'; 
+require_once '../includes/database.php'; 
+require_once '../includes/services/MenuService.php';
 
 $database = new Database();
 $db = $database->getConnection();
-
-// Récupération de tous les menus pour laisser le JavaScript filtrer 
-$sql = "SELECT * FROM menus";
-$query = $db->prepare($sql);
-$query->execute();
-$menus = $query->fetchAll(PDO::FETCH_ASSOC);
+$menuService = new MenuService($db);
+$menus = $menuService->getAllMenus();
 ?>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">

@@ -1,6 +1,6 @@
 <?php 
 require_once '../includes/header.php'; 
-require_once '../includes/db.php'; 
+require_once '../includes/database.php'; 
 
 // Sécurité : Seule Julie/José (admin) peut entrer mais faudra utiliser Klenkle
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {

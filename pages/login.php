@@ -1,6 +1,5 @@
-<?php 
-require_once '../includes/header.php'; 
-require_once '../includes/db.php'; 
+<?php  
+require_once '../includes/database.php'; 
 require_once '../includes/user.php';
 
 $erreur = "";
@@ -43,6 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <div class="login-container" style="background-color: #0c0b0a; min-height: 85vh; display: flex; align-items: center; justify-content: center;">
+    <?php require_once '../includes/header.php'; ?>
+<div class="login-container" style="background-color: #0c0b0a; min-height: 85vh; display: flex; align-items: center; justify-content: center;"></div>
     <div class="login-card" style="background: #161513; border: 1px solid #C17F3A; border-radius: 20px; padding: 50px; width: 100%; max-width: 450px;">
         <h2 class="text-center" style="color: #C17F3A; font-family: 'Playfair Display', serif;">Connexion</h2>
         

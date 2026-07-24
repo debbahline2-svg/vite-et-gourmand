@@ -1,6 +1,6 @@
 <?php 
 require_once '../includes/header.php'; 
-require_once '../includes/db.php'; 
+require_once '../includes/database.php'; 
 
 // Récupération sécurisée du type d'option
 $type = isset($_GET['type']) ? trim($_GET['type']) : '';

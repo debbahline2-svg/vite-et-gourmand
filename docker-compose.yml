@@ -1,0 +1,37 @@
+services:
+  web:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+    environment:
+      - APP_ENV=local
+    depends_on:
+      - db-sql
+      - db-nosql
+
+  db-sql:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: changeme
+      MYSQL_DATABASE: vite_et_gourmand
+    ports:
+      - "3309:3306"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - db-sql-data:/var/lib/mysql
+
+  db-nosql:
+    image: mongo:7
+    restart: always
+    ports:
+      - "27018:27017"
+    volumes:
+      - db-nosql-data:/data/db
+
+volumes:
+  db-sql-data:
+  db-nosql-data:

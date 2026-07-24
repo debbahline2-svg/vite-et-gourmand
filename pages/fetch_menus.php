@@ -1,5 +1,5 @@
 <?php
-require_once '../includes/db.php';
+require_once '../includes/database.php';
 
 $budget = isset($_GET['budget']) ? $_GET['budget'] : 'all';
 $regime = isset($_GET['regime']) ? $_GET['regime'] : 'all';

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../includes/db.php';
+require_once '../includes/database.php';
 
 // Sécurité admin est connecté
 if (!isset($_SESSION['admin'])) {

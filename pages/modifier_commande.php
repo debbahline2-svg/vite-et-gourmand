@@ -1,6 +1,6 @@
 <?php
 require_once '../includes/header.php';
-require_once '../includes/db.php';
+require_once '../includes/database.php';
 
 // 1. Vérification de sécurité
 if (!isset($_SESSION['role']) || ($_SESSION['role'] !== 'employe' && $_SESSION['role'] !== 'admin')) {

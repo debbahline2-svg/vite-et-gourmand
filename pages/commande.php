@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../includes/db.php';
+require_once '../includes/database.php';
 require_once '../includes/user.php';
 
 if (!isset($_SESSION['user_id'])) {
@@ -9,6 +9,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 require_once '../includes/header.php';
+require_once '../includes/services/CommandeService.php';
 
 $database = new Database();
 $db = $database->getConnection();
@@ -39,33 +40,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $distance = floatval($_POST['distance'] ?? 0);
     $date_evenement = $_POST['date_prestation'];
 
-    $prix_total_menu = $prixUnitaire * $nb_personnes;
+    $commandeService = new CommandeService($db);
+    $total_final_ttc = $commandeService->calculerTotal($prixUnitaire, $nb_personnes, $nbMinPersonnes, $ville, $distance);
 
-    if ($nb_personnes >= ($nbMinPersonnes + 5)) {
-        $prix_total_menu = $prix_total_menu * 0.90;
-    }
+    $result = $commandeService->creerCommande(
+        $_SESSION['user_id'],
+        $id_du_menu,
+        $date_evenement,
+        $nb_personnes,
+        $total_final_ttc,
+        $distance
+    );
 
-    $frais_livraison = (strtolower($ville) === 'bordeaux') ? 5.00 : ($distance * 5.59);
-    $total_final_ttc = $prix_total_menu + $frais_livraison;
-
-    try {
-        $query = "INSERT INTO commandes (user_id, id_menu, date_evenement, nb_personnes, total_prix, statut, distance_km)
-                  VALUES (:uid, :id_m, :date_e, :nb, :total, 'En attente', :dist_km)";
-        $stmt = $db->prepare($query);
-        $stmt->execute([
-            ':uid'     => $_SESSION['user_id'],
-            ':id_m'    => $id_du_menu,
-            ':date_e'  => $date_evenement,
-            ':nb'      => $nb_personnes,
-            ':total'   => $total_final_ttc,
-            ':dist_km' => $distance
-        ]);
-
-        $success = true;
-        $message = "Félicitations ! Votre commande a été transmise. Montant final : " . number_format($total_final_ttc, 2, ',', ' ') . " €";
-
-    } catch (PDOException $e) {
-        $error = "Erreur de base de données : " . $e->getMessage();
+    $success = $result['success'];
+    $message = $result['message'];
+    if (!$success) {
+        $error = $result['message'];
     }
 }
 ?>

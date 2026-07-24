@@ -1,6 +1,6 @@
 <?php
 require_once '../includes/header.php';
-require_once '../includes/db.php';
+require_once '../includes/database.php';
 
 // Sécurité admin seulement
 if ($_SESSION['role'] !== 'admin') { header('Location: ../index.php'); exit; }

@@ -1,7 +1,7 @@
 <?php
 session_start();
 // On corrige les chemins selon dossier 
-require_once '../includes/db.php';
+require_once '../includes/database.php';
 require_once '../includes/user.php';
 
 // Connexion à la base de données
