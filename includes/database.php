@@ -13,7 +13,7 @@ class Database {
             $this->host     = 'kodama.proxy.rlwy.net';
             $this->db_name  = 'railway';
             $this->username = 'root';
-            $this->password = 'jAwHSNIFOwqlphobkQNWmbRUthjqRqve';
+            $this->password = '';
             $this->port     = '41233';
         } else {
             // Config locale (Docker)
