@@ -16,7 +16,7 @@ services:
     image: mysql:8.0
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: changeme
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
       MYSQL_DATABASE: vite_et_gourmand
     ports:
       - "3309:3306"
@@ -27,6 +27,9 @@ services:
   db-nosql:
     image: mongo:7
     restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: "${MONGO_ROOT_PASSWORD}"
     ports:
       - "27018:27017"
     volumes:
