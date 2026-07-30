@@ -13,14 +13,14 @@ class Database {
             $this->host     = 'kodama.proxy.rlwy.net';
             $this->db_name  = 'railway';
             $this->username = 'root';
-            $this->password = '';
+            $this->password = getenv('MYSQL_PASSWORD') ?: 'd';
             $this->port     = '41233';
         } else {
             // Config locale (Docker)
             $this->host     = 'db-sql';
             $this->db_name  = 'vite_et_gourmand';
             $this->username = 'root';
-            $this->password = 'changeme';
+            $this->password = getenv('MYSQL_ROOT_PASSWORD') ?: 'changeme';
             $this->port     = '3306';
         }
     }

@@ -235,7 +235,7 @@ $menus = $menuService->getAllMenus();
         </div>
 
         <div class="text-center mt-5">
-            <a href="contact.php" class="btn" style="background: #C17F3A; color: black; font-weight: bold; padding: 12px 35px; border-radius: 30px; text-transform: uppercase; text-decoration: none; display: inline-block; font-size: 0.85rem; letter-spacing: 0.5px; transition: 0.3s;">
+            <a href="contact.php" class="btn" style="background: #C17F3A; color: black; font-weight: bold; padding: 12px 35px; border-raaddEventListenerdius: 30px; text-transform: uppercase; text-decoration: none; display: inline-block; font-size: 0.85rem; letter-spacing: 0.5px; transition: 0.3s;">
                 Demander un devis sur-mesure
             </a>
         </div>

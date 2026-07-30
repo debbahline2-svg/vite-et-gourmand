@@ -1,10 +1,12 @@
 <?php 
-require_once '../includes/header.php'; 
+session_start();
 require_once '../includes/database.php'; 
 require_once '../includes/user.php';
 
 // Sécurité
 if (!isset($_SESSION['user_id'])) { header('Location: login.php'); exit; }
+
+require_once '../includes/header.php';
 
 $database = new Database();
 $db = $database->getConnection();

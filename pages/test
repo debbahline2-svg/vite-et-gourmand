@@ -1,0 +1,7 @@
+if ($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['id_commande'])) {
+    $service =new CommandeService((new Database())->getConnection());
+    $result =$service->annulerCommande($_POST['id_commande'], $_SESSION['user_id'], $_POST['raison'] ?? '');
+
+    header('Location: profil.php?status=' . ($result['success'] ? 'cancelled' : 'error') . '&msg=' . urlencode($result['message']));
+    exit;
+}

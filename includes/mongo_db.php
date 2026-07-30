@@ -25,7 +25,13 @@ class MongoDatabase {
         }
 
         try {
-            $this->client = new MongoDB\Client("mongodb://{$host}:{$port}");
+            if (getenv('APP_ENV') === 'production') {
+    $this->client = new MongoDB\Client("mongodb://{$host}:{$port}");
+} else {
+    $mongoUser = 'root';
+    $mongoPass = getenv('MONGO_ROOT_PASSWORD') ?: 'changeme';
+    $this->client = new MongoDB\Client("mongodb://{$mongoUser}:{$mongoPass}@{$host}:{$port}/?authSource=admin");
+}
             $this->database = $this->client->vite_et_gourmand;
         } catch (Exception $e) {
             error_log("Erreur de connexion MongoDB : " . $e->getMessage());

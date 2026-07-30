@@ -21,7 +21,7 @@ $back = $is_pages ? "../" : "";
             --dark-bg: #0c0b0a;
         }
 
-        /* --- LOGIQUE DALTONIEN (ya plusieur type donc pas hyper hyper fiable) --- */
+        /* --- LOGIQUE DALTONIEN --- */
         body.dalton-mode {
             filter: saturate(200%) contrast(110%);
         }
@@ -87,7 +87,7 @@ $back = $is_pages ? "../" : "";
         
         <button id="btnDalton" class="btn-daltonien">Mode Daltonien</button>
         
-        <div class="collapse navbar-collapse">
+        <div class="collapse navbar-collapse show">
             <ul class="navbar-nav ms-auto align-items-center">
                 <li class="nav-item"><a class="nav-link" href="<?= $back ?>index.php">Accueil</a></li>
                 <li class="nav-item"><a class="nav-link" href="<?= $prefix ?>menus.php">Nos menus</a></li>
@@ -95,13 +95,13 @@ $back = $is_pages ? "../" : "";
 
                 <?php if (isset($_SESSION['user_id'])) : ?>
                     
-                    <?php if ($_SESSION['role'] === 'admin') : ?>
+                    <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin') : ?>
                         <li class="nav-item">
                             <a class="nav-link" href="<?= $prefix ?>admin_dashboard.php" style="color: #FFC107 !important;">ADMIN</a>
                         </li>
                     <?php endif; ?>
 
-                    <?php if ($_SESSION['role'] === 'employe') : ?>
+                    <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'employe') : ?>
                         <li class="nav-item">
                             <a class="nav-link" href="<?= $prefix ?>employe_dashboard.php" style="color: #0dcaf0 !important;">COMMANDES</a>
                         </li>
@@ -122,3 +122,23 @@ $back = $is_pages ? "../" : "";
         </div>
     </div>
 </nav>
+
+<!-- Script pour activer/désactiver le mode daltonien et mémoriser le choix -->
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+    const btnDalton = document.getElementById('btnDalton');
+    
+    // Vérifier si le mode était déjà activé dans le navigateur
+    if (localStorage.getItem('daltonMode') === 'true') {
+        document.body.classList.add('dalton-mode');
+    }
+
+    if (btnDalton) {
+        btnDalton.addEventListener('click', () => {
+            document.body.classList.toggle('dalton-mode');
+            const isDalton = document.body.classList.contains('dalton-mode');
+            localStorage.setItem('daltonMode', isDalton);
+        });
+    }
+});
+</script>

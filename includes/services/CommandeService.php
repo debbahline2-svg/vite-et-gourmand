@@ -15,7 +15,7 @@ class CommandeService {
             $prixTotalMenu *= 0.90;
         }
 
-        $fraisLivraison = (strtolower($ville) === 'bordeaux') ? 5.00 : ($distance * 5.59);
+        $fraisLivraison = (strtolower($ville) === 'bordeaux') ? 5.00 : (5.00 + ($distance * 0.59));
 
         return $prixTotalMenu + $fraisLivraison;
     }
