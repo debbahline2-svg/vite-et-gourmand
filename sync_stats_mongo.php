@@ -22,4 +22,4 @@ foreach ($rows as $row) {
     }
 }
 
-echo "OK : " . count($rows) . " menus synchronisés.";
+echo "OK : " . count($rows) . " menus synchronisés."; 

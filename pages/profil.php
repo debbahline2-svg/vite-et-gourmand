@@ -2,6 +2,7 @@
 session_start();
 require_once '../includes/database.php'; 
 require_once '../includes/user.php';
+require_once '../includes/repositories/AvisRepository.php';
 
 // Sécurité
 if (!isset($_SESSION['user_id'])) { header('Location: login.php'); exit; }
@@ -12,6 +13,7 @@ $database = new Database();
 $db = $database->getConnection();
 $user = new User($db);
 $userInfo = $user->getOneById($_SESSION['user_id']);
+$avisRepository = new AvisRepository($db);
 ?>
 
 <style>
@@ -78,6 +80,31 @@ $userInfo = $user->getOneById($_SESSION['user_id']);
                                                     <input type="text" name="raison" placeholder="Raison ?" required class="form-control form-control-sm mb-1" style="background:#222; color:white; font-size: 0.7rem;">
                                                     <button type="submit" class="btn btn-danger btn-sm" style="font-size: 0.7rem;">Annuler</button>
                                                 </form>
+                                            <?php elseif ($statut_propre === 'livré' || $statut_propre === 'livre'):
+                                                $avisExistant = $avisRepository->findByCommande($cmd['id']);
+                                            ?>
+                                                <?php if ($avisExistant): ?>
+                                                    <div class="avisExistant" data-id-avis="<?= $avisExistant['id'] ?>" style="font-size: 0.7rem;">
+                                                        <div><?= str_repeat('★', $avisExistant['note']) ?></div>
+                                                        <div style="color:#ccc; font-style: italic;"><?= htmlspecialchars($avisExistant['commentaire']) ?></div>
+                                                        <button type="button" class="btn btn-outline-danger btn-sm deleteAvisBtn mt-1" data-id-avis="<?= $avisExistant['id'] ?>" style="font-size: 0.7rem;">Supprimer mon avis</button>
+                                                    </div>
+                                                    <div class="avisMessage" style="display:none; font-size: 0.7rem; margin-top: 5px;"></div>
+                                                <?php else: ?>
+                                                    <form class="avisForm" data-id-commande="<?= $cmd['id'] ?>">
+                                                        <select name="note" required class="form-select form-select-sm mb-1" style="background:#222; color:white; font-size: 0.7rem;">
+                                                            <option value="">Note</option>
+                                                            <option value="1">1 ★</option>
+                                                            <option value="2">2 ★</option>
+                                                            <option value="3">3 ★</option>
+                                                            <option value="4">4 ★</option>
+                                                            <option value="5">5 ★</option>
+                                                        </select>
+                                                        <input type="text" name="com" placeholder="Votre avis" required class="form-control form-control-sm mb-1" style="background:#222; color:white; font-size: 0.7rem;">
+                                                        <button type="submit" class="btn btn-outline-warning btn-sm" style="font-size: 0.7rem;">Envoyer</button>
+                                                    </form>
+                                                    <div class="avisMessage" style="display:none; font-size: 0.7rem; margin-top: 5px;"></div>
+                                                <?php endif; ?>
                                             <?php else: ?> - <?php endif; ?>
                                         </td>
                                     </tr>
@@ -92,4 +119,6 @@ $userInfo = $user->getOneById($_SESSION['user_id']);
         </div>
     </div>
 </div>
+
+<script src="../js/avis.js"></script>
 <?php require_once '../includes/footer.php'; ?>

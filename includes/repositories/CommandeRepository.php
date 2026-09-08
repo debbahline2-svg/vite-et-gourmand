@@ -19,4 +19,25 @@ class CommandeRepository {
             ':dist_km' => $distanceKm
         ]);
     }
+
+    public function countAll() {
+        $sql = "SELECT COUNT(*) FROM commandes";
+        return $this->db->query($sql)->fetchColumn();
+    }
+
+    public function sumTotalPrix() {
+        $sql = "SELECT SUM(total_prix) FROM commandes WHERE statut != 'annulee'";
+        return $this->db->query($sql)->fetchColumn() ?: 0;
+    }
+
+    public function findAllWithDetails() {
+        $sql = "SELECT c.*, u.nom as client_nom, u.prenom as client_prenom, m.titre as menu_titre 
+                FROM commandes c 
+                JOIN utilisateurs u ON c.user_id = u.id 
+                JOIN menus m ON c.id_menu = m.id 
+                ORDER BY c.date_commande DESC";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

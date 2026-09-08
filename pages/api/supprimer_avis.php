@@ -11,23 +11,18 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 try {
-    $db = (new Database())->getConnection();
+    $database = new Database();
+    $db = $database->getConnection();
     $service = new AvisService($db);
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST'
-        && isset($_GET['id_commande'])
-        && isset($_POST['note'])
-        && isset($_POST['com'])) {
-
-        $result = $service->ajouterAvis(
-            (int)$_GET['id_commande'],
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
+        $result = $service->supprimerAvis(
+            $_POST['id'],
             $_SESSION['user_id'],
-            (int)$_POST['note'],
-            $_POST['com']
+            $_SESSION['role']
         );
         echo json_encode($result);
     } else {
-        http_response_code(400);
         echo json_encode(['success' => false, 'message' => 'Requête invalide.']);
     }
 } catch (Throwable $e) {

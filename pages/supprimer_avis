@@ -1,2 +1,0 @@
-$db->prepare("DELETE FROM avis WHERE id = ?")->execute([$_GET['id']]);
-// peux faire UPDATE sur la commande

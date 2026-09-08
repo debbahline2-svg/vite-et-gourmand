@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'db.php'; 
+require_once 'database.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // 1. On récupère les noms exacts champs <input>

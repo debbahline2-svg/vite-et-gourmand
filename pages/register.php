@@ -45,6 +45,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $user->password = $password;
 
         if ($user->register()) {
+            // Envoi automatique d'un mail de bienvenue, exigé par le cahier des charges.
+            // Un échec d'envoi (SMTP indisponible, etc.) ne doit pas empêcher
+            // l'inscription de réussir : Mailer::envoyer() logue l'erreur en interne
+            // et renvoie simplement false, sans jamais interrompre le script.
+            require_once '../includes/Mailer.php';
+            Mailer::envoyer(
+                $user->email,
+                "Bienvenue chez Vite & Gourmand !",
+                "<p>Bonjour " . htmlspecialchars($prenom) . ",</p>
+                 <p>Votre compte a bien été créé. Bienvenue chez Julie & José !</p>
+                 <p>Vous pouvez dès à présent consulter nos menus et passer commande.</p>"
+            );
+
             $message = "Compte créé ! Bienvenue chez Julie & José.";
             $prenom = $nom = $email = $gsm = $adresse = "";
         } else {
