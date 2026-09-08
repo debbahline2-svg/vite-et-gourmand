@@ -1,4 +1,4 @@
- <?php
+git add pages/detail-menu.php<?php
 
 require_once '../includes/header.php';
 
